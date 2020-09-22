@@ -38,5 +38,4 @@ RUN yum -y install wget git \
 EXPOSE 80
 EXPOSE 3306
 
-ENTRYPOINT ["lnmp"]
-CMD ["start"]
+CMD ["lnmp", "start"]
