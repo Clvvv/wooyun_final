@@ -186,7 +186,7 @@ $(".btn-fav").click(function(){ CollectBug(id,token); });
         </div>
         <!-- Baidu Button END -->
     	</h3>
-		<hr align="center"/<?php echo str_replace('static.loner.fm',$_SERVER['SERVER_ADDR'],$bug_detail['wybug_detail']);?>
+		<hr align="center"/<?php echo str_replace('http://static.loner.fm/','',$bug_detail['wybug_detail']);?>
 		<hr align="center"/<?php echo $bug_detail['wybug_reply'];?>
 					
 		
