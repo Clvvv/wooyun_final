@@ -19,6 +19,8 @@ RUN yum -y install wget git \
     && rm -rf * \
     # 拉取网站源码到当前目录
     && git clone https://github.com/V7hinc/wooyun_final.git ./ \
+    # 删除Dockerfile文件
+    && rm -rf Dockerfile \
     # 替换数据库密码
     && sed -i "s/root\")/${DB_Root_Password}\")/" conn.php \
     # 创建数据库wooyun
