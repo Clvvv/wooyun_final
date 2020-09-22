@@ -13,7 +13,7 @@ RUN yum -y install wget git \
     && wget http://soft.vpser.net/lnmp/lnmp1.7.tar.gz -cO lnmp1.7.tar.gz \
     && tar zxf lnmp1.7.tar.gz && cd lnmp1.7 \
     # lnmp脚本无人值守命令解释：DBSelect="4"表示MySQL5.7、PHPSelect="5"表示PHP5.6、SelectMalloc="1"表示不安装内存分配器、ApacheSelect="1"表示Apache2.2，其他请查看https://lnmp.org/faq/v1-5-auto-install.html
-    && LNMP_Auto="y" DBSelect="4" DB_Root_Password="${DB_Root_Password}" InstallInnodb="y" PHPSelect="5" SelectMalloc="1" ApacheSelect="1" ServerAdmin=" CheckMirror="n"" ./install.sh lamp \
+    && LNMP_Auto="y" DBSelect="4" DB_Root_Password="${DB_Root_Password}" InstallInnodb="y" PHPSelect="5" SelectMalloc="1" ApacheSelect="1" ServerAdmin="" ./install.sh lamp \
     && cd "/home/wwwroot/default" \
     # 清除网站根目录下的默认数据
     && rm -rf * \
