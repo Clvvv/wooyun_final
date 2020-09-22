@@ -27,6 +27,7 @@ RUN yum -y install wget git \
     && create_db_sql="create database IF NOT EXISTS ${WOOYUN_DB}" \
     && mysql -hlocalhost -P3306 -uroot -p${DB_Root_Password} -e "${create_db_sql}" \
     # 下载数据库源文件
+    && echo "正在下载wooyun_bugs_db.tar.bz2文件"
     && wget -c https://github.com/V7hinc/wooyun_final/releases/download/1.0/wooyun_bugs_db.tar.bz2 \
     # 解压数据库源文件到wooyun数据库目录下
     && tar xjvf wooyun_bugs_db.tar.bz2 -C /usr/local/mysql/var/${WOOYUN_DB} \
