@@ -4,7 +4,7 @@ MAINTAINER V7hinc
 ENV WOOYUN_DB="wooyun"
 ENV DB_Root_Password="wooyun"
 
-VOLUME ["/home/wwwroot/default"]
+VOLUME ["/home/wwwroot/default/upload"]
 
 RUN yum -y install wget git \
     && cd /tmp \
