@@ -30,7 +30,7 @@ RUN yum -y install wget git \
     && echo "正在下载wooyun_bugs_db.tar.bz2文件" \
     && wget -c https://github.com/V7hinc/wooyun_final/releases/download/1.0/wooyun_bugs_db.tar.bz2 \
     # 解压数据库源文件到wooyun数据库目录下
-    && tar xjvf wooyun_bugs_db.tar.bz2 -C /usr/local/mysql/var/${WOOYUN_DB} \
+    && tar xjvf wooyun_bugs_db.tar.bz2 -C /usr/local/mariadb/var/${WOOYUN_DB} \
     # 清除压缩包
     && rm -rf wooyun_bugs_db.tar.bz2
 
