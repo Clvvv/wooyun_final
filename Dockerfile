@@ -30,7 +30,10 @@ RUN yum -y install wget git \
     # 解压数据库源文件到wooyun数据库目录下
     && tar xjvf wooyun_bugs_db.tar.bz2 -C /usr/local/mariadb/var/${WOOYUN_DB} \
     # 清除压缩包
-    && rm -rf wooyun_bugs_db.tar.bz2
+    && rm -rf wooyun_bugs_db.tar.bz2 \
+    # 添加自启动脚本
+    && echo "lnmp start && tail -f /dev/null" > /autostart.sh \
+    && chmod +x /autostart.sh
 
 
 VOLUME ["/home/wwwroot/default/upload"]
@@ -40,4 +43,4 @@ EXPOSE 3306
 
 WORKDIR /home/wwwroot/default/
 
-ENTRYPOINT ["lnmp", "start", "&&", "top"]
+ENTRYPOINT ["/autostart.sh"]
