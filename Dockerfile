@@ -4,6 +4,7 @@ MAINTAINER V7hinc
 ENV WOOYUN_DB="wooyun"
 ENV DB_Root_Password="wooyun"
 
+# lnmp环境搭建
 RUN set -x \
     && yum -y install wget git \
     && cd /tmp \
@@ -11,9 +12,12 @@ RUN set -x \
     && wget http://soft.vpser.net/lnmp/lnmp1.7.tar.gz -cO lnmp1.7.tar.gz \
     && tar zxf lnmp1.7.tar.gz && cd lnmp1.7 \
     # lnmp脚本无人值守命令解释：DBSelect="6"表示MariaDB 5.5、PHPSelect="5"表示PHP5.6、SelectMalloc="1"表示不安装内存分配器、ApacheSelect="1"表示Apache2.2，其他请查看https://lnmp.org/faq/v1-5-auto-install.html
-    && LNMP_Auto="y" DBSelect="6" DB_Root_Password="${DB_Root_Password}" InstallInnodb="y" PHPSelect="5" SelectMalloc="1" ApacheSelect="1" ServerAdmin="" ./install.sh lamp \
-    # 进入网站根目录
-    && cd /home/wwwroot/default \
+    && LNMP_Auto="y" DBSelect="6" DB_Root_Password="${DB_Root_Password}" InstallInnodb="y" PHPSelect="5" SelectMalloc="1" ApacheSelect="1" ServerAdmin="" ./install.sh lamp
+
+# 进入网站根目录
+WORKDIR /home/wwwroot/default
+# 网站源码拉取
+RUN set -x \
     # 清除网站根目录下的默认数据
     && rm -rf * \
     # 拉取网站源码到当前目录
@@ -21,7 +25,10 @@ RUN set -x \
     # 删除Dockerfile文件
     && rm -rf Dockerfile \
     # 替换数据库密码
-    && sed -i "s/root\")/${DB_Root_Password}\")/" conn.php \
+    && sed -i "s/root\")/${DB_Root_Password}\")/" conn.php
+
+# wooyun数据库恢复
+RUN set -x \
     # 创建数据库wooyun
     && create_db_sql="create database IF NOT EXISTS ${WOOYUN_DB}" \
     && mysql -hlocalhost -P3306 -uroot -p${DB_Root_Password} -e "${create_db_sql}" \
