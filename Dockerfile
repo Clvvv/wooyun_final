@@ -4,17 +4,15 @@ MAINTAINER V7hinc
 ENV WOOYUN_DB="wooyun"
 ENV DB_Root_Password="wooyun"
 
-VOLUME ["/home/wwwroot/default/upload"]
-
 RUN yum -y install wget git \
     && cd /tmp \
-
     # 安装lamp
     && wget http://soft.vpser.net/lnmp/lnmp1.7.tar.gz -cO lnmp1.7.tar.gz \
     && tar zxf lnmp1.7.tar.gz && cd lnmp1.7 \
     # lnmp脚本无人值守命令解释：DBSelect="6"表示MariaDB 5.5、PHPSelect="5"表示PHP5.6、SelectMalloc="1"表示不安装内存分配器、ApacheSelect="1"表示Apache2.2，其他请查看https://lnmp.org/faq/v1-5-auto-install.html
     && LNMP_Auto="y" DBSelect="6" DB_Root_Password="${DB_Root_Password}" InstallInnodb="y" PHPSelect="5" SelectMalloc="1" ApacheSelect="1" ServerAdmin="" ./install.sh lamp \
-    && cd "/home/wwwroot/default" \
+    # 进入网站根目录
+    && cd /home/wwwroot/default \
     # 清除网站根目录下的默认数据
     && rm -rf * \
     # 拉取网站源码到当前目录
@@ -35,7 +33,11 @@ RUN yum -y install wget git \
     && rm -rf wooyun_bugs_db.tar.bz2
 
 
+VOLUME ["/home/wwwroot/default/upload"]
+
 EXPOSE 80
 EXPOSE 3306
+
+WORKDIR /home/wwwroot/default/
 
 CMD ["lnmp", "start"]
