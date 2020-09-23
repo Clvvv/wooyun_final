@@ -48,4 +48,4 @@ EXPOSE 3306
 
 WORKDIR /home/wwwroot/default/
 
-ENTRYPOINT ["lnmp", "restart"]
+ENTRYPOINT lnmp restart && /bin/bash
