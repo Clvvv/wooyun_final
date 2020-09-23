@@ -40,4 +40,4 @@ EXPOSE 3306
 
 WORKDIR /home/wwwroot/default/
 
-CMD ["lnmp", "start"]
+ENTRYPOINT ["lnmp", "start"]
