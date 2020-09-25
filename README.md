@@ -1,5 +1,5 @@
 # wooyun_final
-V7hinc/wooyun_final：https://github.com/V7hinc/wooyun_final
+V7hinc/wooyun_final GitHub链接：https://github.com/V7hinc/wooyun_final
 >代码主要来自于[hanc00l的wooyun_public的wooyun_final](https://github.com/hanc00l/wooyun_public)
 漏洞信息来自于[m0l1ce的wooyun_all_bugs_8.8W](https://github.com/m0l1ce/wooyunallbugs)，包含8.8W漏洞信息（不含知识库）
 支持
