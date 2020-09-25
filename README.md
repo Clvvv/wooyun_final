@@ -21,12 +21,23 @@ docker build -t v7hinc/wooyun github.com/V7hinc/wooyun_final
 docker pull v7hinc/wooyun
 ```
 创建新的容器
+> 由于wooyun的图片占容量较大，所以在Dockerfile中加了VOLUME挂载卷，不至于把容器撑的很大
+
+2种挂载方法（这个地方容易有坑）
+> 1、不指定宿主机挂载目录
 ```shell script
-docker run --name wooyun -v ~/upload:/home/wwwroot/default/upload -p 5000:80 -dit v7hinc/wooyun:latest /bin/bash
+docker run --name wooyun -p 5000:80 -dit v7hinc/wooyun:latest /bin/bash
+# 创建好容器后查看挂载位置，cd进入查询结果"Source"后面的路径,就是对应容器中upload的路径
+[root@localhost ~]# docker inspect wooyun | grep "Source"
+                "Source": "/var/lib/docker/volumes/21313d9e09fd3b571ae1daab856d07012f2081c940a9d839c121fa62f7f43764/_data",
+```
+> 2、指定宿主机挂载目录
+```shell script
+docker run --privileged=true --name wooyun -v ~/upload:/home/wwwroot/default/upload -p 5000:80 -dit v7hinc/wooyun:latest /bin/bash
 ```
 >到此wooyun漏洞库已经还原好了。可以通过访问http://IP:5000访问到了
 >但是会发现打开漏洞详情图片看不了
->接下来需要下载图片资源，然后解压到docker母机的~/upload目录下就可以看到图片了
+>接下来需要下载图片资源，然后解压到docker宿主机的~/upload目录下就可以看到图片了，如果是采用不指定宿主机挂载目录则解压到"Source"对应的路径即可
 
 百度网盘下载链接: https://pan.baidu.com/s/1cadRdAC5Cxb1M_o5URNXSw 提取码: tkqg
 
