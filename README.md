@@ -30,6 +30,25 @@ docker run --name wooyun -v ~/upload:/home/wwwroot/default/upload -p 5000:80 -di
 
 百度网盘下载链接: https://pan.baidu.com/s/1cadRdAC5Cxb1M_o5URNXSw 提取码: tkqg
 
+#### 容器内相关软件安装目录
+```
+Apache目录：/usr/local/apache/
+MariaDB 目录 : /usr/local/mariadb/
+MariaDB数据库所在目录：/usr/local/mariadb/var/
+PHP目录 : /usr/local/php/
+默认网站目录 : /home/wwwroot/default/
+```
+#### 容器内相关配置文件位置
+```
+Apache配置文件：/usr/local/apache/conf/httpd.conf
+Apache虚拟主机配置文件目录：/usr/local/apache/conf/vhost/
+Apache默认虚拟主机配置文件：/usr/local/apache/conf/extra/httpd-vhosts.conf
+虚拟主机配置文件名称：/usr/local/apache/conf/vhost/域名.conf
+MySQL配置文件：/etc/my.cnf
+PHP配置文件：/usr/local/php/etc/php.ini
+php-fpm配置文件：/usr/local/php/etc/php-fpm.conf
+```
+
 # 其它
 
 + 本程序只用于技术研究和个人使用，程序组件均为开源程序，漏洞和知识库来源于乌云公开漏洞，版权归wooyun.org。
