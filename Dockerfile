@@ -28,8 +28,11 @@ git clone https://github.com/V7hinc/wooyun_final.git ./;\
 rm -rf Dockerfile;\
 # 替换数据库密码
 sed -i "s/root\")/${DB_Root_Password}\")/" conn.php;
+
 # wooyun数据库恢复
 RUN set -x;\
+# 开启mariadb
+lnmp mariadb restart;\
 # 创建数据库wooyun
 create_db_sql="create database IF NOT EXISTS ${WOOYUN_DB}";\
 mysql -hlocalhost -P3306 -uroot -p${DB_Root_Password} -e "${create_db_sql}";\
