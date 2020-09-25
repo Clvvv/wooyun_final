@@ -42,8 +42,8 @@ docker run --privileged=true --name wooyun -v ~/upload:/home/wwwroot/default/upl
 百度网盘下载链接: https://pan.baidu.com/s/1cadRdAC5Cxb1M_o5URNXSw 提取码: tkqg
 
 效果图 Nice：
-![index_final](index.png)
-![search_final](bug_detail.png)
+![index](index.png)
+![bug_detail](bug_detail.png)
 
 #### 容器内相关软件安装目录
 ```
