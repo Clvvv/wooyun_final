@@ -5,7 +5,6 @@ ENV WOOYUN_DB="wooyun"
 ENV DB_Root_Password="wooyun"
 ENV SITE_ROOT /home/wwwroot/default
 
-# lnmp环境搭建
 RUN set -x;\
 yum -y install wget git;\
 cd /tmp;\
