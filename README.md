@@ -45,7 +45,8 @@ docker run --privileged=true --name wooyun -v ~/upload:/home/wwwroot/default/upl
 ![index](index.png)
 ![bug_detail](bug_detail.png)
 
-#### 容器内相关软件安装目录
+![pic](pic.png)容器内相关软件安装目录
+
 ```
 Apache目录：/usr/local/apache/
 MariaDB 目录 : /usr/local/mariadb/
